@@ -4,13 +4,11 @@ import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
 
-import vercel from "@astrojs/vercel";
-
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
-  site: 'https://asaad47.github.io', // Replace with your GitHub username
-  base: '/nikola-tesla', // Replace with your repository name
+  site: 'https://asaad47.github.io',
+  base: '/nikola-tesla',
   vite: {
     plugins: [tailwindcss()]
   },
@@ -24,7 +22,5 @@ export default defineConfig({
       cssVariable: "--font-geist",
       fallbacks: ["Inter", "sans-serif"],
     }]
-  },
-
-  adapter: vercel()
+  }
 });
