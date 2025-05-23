@@ -8,7 +8,6 @@ import react from '@astrojs/react';
 export default defineConfig({
   output: 'static',
   site: 'https://asaad47.github.io/nikola-tesla',
-  base: '/nikola-tesla',
   vite: {
     plugins: [tailwindcss()]
   },
