@@ -1,24 +1,19 @@
 ---
 import clsx from "clsx";
-import { actions } from "astro:actions";
 import H1 from "../../components/h1.astro";
 import { formatDate } from "../../lib/utils";
 import InfoLayout from "../../layouts/InfoLayout.astro";
+import { getCollection } from "astro:content";
 
-const categoriesResult = await Astro.callAction(actions.categories.getCategories, null);
-const categories = categoriesResult?.data?.categories || [];
+export const prerender = true;
+
+const allArticles = await getCollection("articles");
+const categories = [...new Set(allArticles.map((article) => article.data.category))];
 
 const selectedCategory = Astro.url.searchParams.get("category") || "all";
-
-const articlesResult = await Astro.callAction(actions.categories.filterByCategory, {
-    category: selectedCategory,
-});
-
-if (articlesResult?.error) {
-    console.log("error", articlesResult.error);
-}
-
-const articles = articlesResult?.data?.articles || [];
+const articles = selectedCategory === "all" 
+    ? allArticles 
+    : allArticles.filter(article => article.data.category.toLowerCase() === selectedCategory.toLowerCase());
 ---
 
 <InfoLayout>
