@@ -24,6 +24,7 @@ if (article === undefined) {
 }
 
 const { Content } = await render(article);
+const isArabic = article.data.language === 'ar';
 
 const allArticles = await getCollection("articles");
 
@@ -34,8 +35,13 @@ const relatedArticles = allArticles.filter(
 );
 ---
 
-<InfoLayout title={article.data.title} frontmatter={article.data}>
-    <section class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-screen">
+<InfoLayout 
+    title={article.data.title} 
+    frontmatter={article.data}
+    lang={article.data.language}
+    dir={isArabic ? 'rtl' : 'ltr'}
+>
+    <section class={`p-4 sm:pt-8 sm:px-12 pb-20 min-h-screen ${isArabic ? 'font-arabic' : ''}`}>
         <Prose>
             <Content />
         </Prose>

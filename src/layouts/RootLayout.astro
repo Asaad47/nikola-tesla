@@ -4,14 +4,14 @@ import { Font } from "astro:assets";
 import { ClientRouter } from 'astro:transitions';
 import LoadingIndicator from "astro-loading-indicator/component"
 
-const { title, description } = Astro.props;
+const { title, description, lang = 'en', dir = 'ltr' } = Astro.props;
 
 const defaultTitle = "Asaad's Playground";
 const defaultDescription = "Asaad's Playground for experiments and ideas";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} dir={dir}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />

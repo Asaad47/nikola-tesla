@@ -10,6 +10,7 @@ pubDate: 2025 4 12
 coverAlt: book cover
 originalLink: https://asaad47.github.io
 cover: https://page-7.com/ar/اختفاء-الذات-عن-نفسها/p1783850056
+language: ar
 ---
 
 # اختفاء الذات عن نفسها
